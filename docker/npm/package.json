@@ -1,0 +1,11 @@
+{
+  "name": "custom-symfony-project",
+  "version": "1.0.0",
+  "author": "Pete Gore <pierre@petegore.fr>",
+  "description": "Node.JS Docker container for Symfony app",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "font-awesome": "*"
+  }
+}

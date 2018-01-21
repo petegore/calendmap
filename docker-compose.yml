@@ -29,5 +29,13 @@ services:
         volumes_from:
             - php
         volumes:
-            - "./var/log/nginx/:/var/log/nginx"
+            - "./var/log/nginx:/var/log/nginx"
         container_name: calendmap-nginx
+    base_npm:
+        build: docker/npm
+        environment:
+            - NODE_ENV=dev
+        volumes:
+            - "./app/node_modules:/home/node/app/node_modules"
+        container_name: calendmap-npm
+        tty: true
