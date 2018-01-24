@@ -1,12 +1,12 @@
 // config/webpack/webpack.config.js
 
 var Encore = require('@symfony/webpack-encore');
-
 Encore
     // See https://symfony.com/doc/current/frontend/encore/simple-example.html
-    .setOutputPath('public/build/')
+    .setOutputPath('./public/build')
     .setPublicPath('/build')
     .addEntry('app', './assets/js/app.js')
+    .addStyleEntry('main', './assets/sass/main.scss')
     .enableSassLoader()
     .autoProvidejQuery()
     .enableSourceMaps(!Encore.isProduction())
