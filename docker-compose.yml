@@ -38,4 +38,6 @@ services:
             - NODE_ENV=dev
         volumes:
             - "./app/node_modules:/home/node/app/node_modules"
+        volumes_from:
+            - php
         container_name: calendmap-npm

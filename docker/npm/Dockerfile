@@ -8,7 +8,7 @@ USER node
 
 # create work dir : install to run npm install and app to copy node module after container run
 RUN mkdir /home/node/install/
-RUN mkdir /home/node/app/
+RUN mkdir /home/node/app
 
 # delete existing modules and re-install dependencies
 WORKDIR /home/node/install/
@@ -21,12 +21,11 @@ RUN npm install
 USER root
 RUN npm install --global webpack
 RUN npm install --global vue-cli
-USER node
-
-# copying node modules after run
-WORKDIR /home/node/app/
 
 # Always use this syntax to avoid wildcard issues - Run cp in CMD to avoid mount overwritting
-CMD cp -R /home/node/install/node_modules/* /home/node/app/node_modules \
-    && cp /home/node/install/package.json /home/node/app/ \
-    && tail -f /dev/null
+WORKDIR /var/www/symfony/app
+
+CMD rm -rf /var/www/symfony/app/package.json \
+    && cp -rp /home/node/install/node_modules/. /home/node/app/node_modules \
+    && cp /home/node/install/package.json /var/www/symfony/app \
+    && ./node_modules/.bin/encore dev --watch
