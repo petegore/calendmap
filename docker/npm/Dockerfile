@@ -17,8 +17,16 @@ COPY package-lock.json package-lock.json
 RUN rm -rf node_modules
 RUN npm install
 
+# installing globally useful nodes
+USER root
+RUN npm install --global webpack
+RUN npm install --global vue-cli
+USER node
+
 # copying node modules after run
 WORKDIR /home/node/app/
 
-# Always use this syntax to avoid wildcard issues
-CMD cp -R /home/node/install/node_modules/* /home/node/app/node_modules
+# Always use this syntax to avoid wildcard issues - Run cp in CMD to avoid mount overwritting
+CMD cp -R /home/node/install/node_modules/* /home/node/app/node_modules \
+    && cp /home/node/install/package.json /home/node/app/ \
+    && tail -f /dev/null
