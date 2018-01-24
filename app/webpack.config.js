@@ -6,6 +6,7 @@ Encore
     .setOutputPath('./public/build')
     .setPublicPath('/build')
     .addEntry('app', './assets/js/app.js')
+    .addStyleEntry('main', './assets/sass/main.scss')
     .enableSassLoader()
     .autoProvidejQuery()
     .enableSourceMaps(!Encore.isProduction())

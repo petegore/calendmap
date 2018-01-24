@@ -13,6 +13,6 @@ class MainController extends Controller
      */
     public function homepage()
     {
-        return $this->render('main/homepage.html.twig');
+        return $this->render('main/map.html.twig');
     }
 }

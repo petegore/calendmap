@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('build/main.css') }}">
 </head>
 <body>
-    <div id="content">
-        {% block body %}{% endblock %}
-    </div>
+    {% block body %}{% endblock %}
+
+    {% block javascripts %}{% endblock %}
 </body>
 </html>
