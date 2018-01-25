@@ -26,6 +26,8 @@ RUN npm install --global vue-cli
 WORKDIR /var/www/symfony/app
 
 CMD rm -rf /var/www/symfony/app/package.json \
-    && cp -rp /home/node/install/node_modules/. /home/node/app/node_modules \
-    && cp /home/node/install/package.json /var/www/symfony/app \
+    # Uncomment the following line if your node_modules have to be updated
+    #&& cp -rp /home/node/install/node_modules/. /home/node/app/node_modules \
+    && cp -f /home/node/install/package.json /var/www/symfony/app \
+    && rm -f /home/node/app/public/build/* \
     && ./node_modules/.bin/encore dev --watch
