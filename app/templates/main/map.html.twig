@@ -1,26 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <div id="map" style="width:100%; height:800px;">
-
-    </div>
+{% block app %}
+    <base-map style="width: 500px; height: 300px"></base-map>
 {% endblock %}
 
-{% block javascripts %}
-    <script>
-        function initMap() {
-            var lyon = {lat: 45.764058, lng: 4.834777};
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 10,
-                center: lyon
-            });
-            var marker = new google.maps.Marker({
-                position: lyon,
-                map: map
-            });
-        }
-    </script>
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbkaVNsixp_h_ry6VD1Qjy2FnVefthBlI&callback=initMap">
-    </script>
+{% block more_javascripts %}
 {% endblock %}
