@@ -1,0 +1,6 @@
+/* Avoid map bug at page loading */
+.vue-map-container,
+.vue-map-container .vue-map {
+  width: 100%;
+  height: 100%;
+}
