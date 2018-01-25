@@ -29,5 +29,15 @@ services:
         volumes_from:
             - php
         volumes:
-            - "./var/log/nginx/:/var/log/nginx"
+            - "./var/log/nginx:/var/log/nginx"
         container_name: calendmap-nginx
+    # Base NPM container that will be reuse to run NPM components such as webpack and vue.js (see next)
+    base_npm:
+        build: docker/npm
+        environment:
+            - NODE_ENV=dev
+        volumes:
+            - "./app/node_modules:/home/node/app/node_modules"
+        volumes_from:
+            - php
+        container_name: calendmap-npm
