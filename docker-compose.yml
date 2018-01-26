@@ -18,7 +18,7 @@ services:
         links:
             - db:mysqldb
         volumes:
-            - ".:/var/www/symfony"
+            - "./app:/var/www/symfony/app"
         container_name: calendmap-php
     nginx:
         build: docker/nginx
@@ -38,6 +38,4 @@ services:
             - NODE_ENV=dev
         volumes:
             - "./app:/var/www/symfony/app:rw"
-        volumes_from:
-            - php
         container_name: calendmap-npm
