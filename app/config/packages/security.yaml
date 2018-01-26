@@ -1,0 +1,23 @@
+security:
+    encoders:
+        App\Entity\User:
+            algorithm: bcrypt
+
+    providers:
+        native_provider:
+            entity:
+                class: App\Entity\User
+                property: username
+                manager_name: native_users
+
+    firewalls:
+        main:
+            pattern:    ^/test
+            http_basic: ~
+            provider: native_provider
+
+    access_control:
+        - { path: ^/test, roles: ROLE_USER }
+
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
