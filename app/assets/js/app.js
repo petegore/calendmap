@@ -10,7 +10,7 @@ Vue.use(VueGoogleMaps, {
     load: {
         key: 'AIzaSyDbkaVNsixp_h_ry6VD1Qjy2FnVefthBlI',
         v: '3.',
-        // libraries: 'places', //// If you need to use place input
+        libraries: 'places',
     }
 });
 

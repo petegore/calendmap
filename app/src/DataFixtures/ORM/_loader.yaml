@@ -1,0 +1,3 @@
+include:
+  - User.yaml
+  # add here other fixtures files
