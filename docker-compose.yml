@@ -37,7 +37,7 @@ services:
         environment:
             - NODE_ENV=dev
         volumes:
-            - "./app/node_modules:/home/node/app/node_modules"
+            - "./app:/var/www/symfony/app:rw"
         volumes_from:
             - php
         container_name: calendmap-npm

@@ -1,2 +1,3 @@
 # Avoid issue when we run webpack into NPM container after updating code
-app/public/build
+app/public/
+app/node_modules/

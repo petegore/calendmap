@@ -16,11 +16,9 @@
 
         data () {
             return {
-                center: {lat: 10.0, lng: 10.0},
+                center: {lat: 46.666827, lng: 2.290004},
                 markers: [{
-                    position: {lat: 10.0, lng: 10.0}
-                }, {
-                    position: {lat: 11.0, lng: 11.0}
+                    position: {lat: 45.764657, lng: 4.834262}
                 }]
             }
         },
