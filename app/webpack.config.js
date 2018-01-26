@@ -17,25 +17,18 @@ Encore
 
     // VueJS
     .enableVueLoader()
+
+    .addPlugin(new LodashModuleReplacementPlugin)
+    .addPlugin(new webpack.optimize.UglifyJsPlugin)
 ;
 
-module.exports = {
-    'module': {
-        'rules': [{
-            'use': 'babel',
-            'test': /\.js$/,
-            'exclude': /node_modules/,
-            'options': {
-                'plugins': ['lodash'],
-                'presets': [['env', { 'modules': false, 'targets': { 'node': 4 } }]]
-            }
-        }]
-    },
-    'plugins': [
-        new LodashModuleReplacementPlugin,
-        new webpack.optimize.UglifyJsPlugin
-    ]
+// export the final configuration
+var config = Encore.getWebpackConfig();
+
+// adding some native webpack config options
+config.watchOptions = {
+    poll: true,
+    ignored: /node_modules/
 };
 
-// export the final configuration
-module.exports = Encore.getWebpackConfig();
+module.exports = config;
