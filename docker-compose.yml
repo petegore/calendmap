@@ -8,15 +8,17 @@ services:
             - 3306:3306
         volumes:
             - "./data/mysql:/var/lib/mysql"
-        environment:
-            MYSQL_ROOT_PASSWORD: root
+        env_file:
+            - docker/mysql/mysql.env
         container_name: calendmap-mysql
     php:
         build: docker/php7-fpm
         ports:
             - 9000:9000
+        env_file:
+            - docker/mysql/mysql.env
         links:
-            - db:mysqldb
+            - db:mysqldbcontainer
         volumes:
             - "./app:/var/www/symfony/app"
         container_name: calendmap-php
