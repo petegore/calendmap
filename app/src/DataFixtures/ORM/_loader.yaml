@@ -1,3 +1,7 @@
 include:
-  - User.yaml
+  - Embeddable/GpsCoordinates.yaml
+  - Embeddable/Addresses.yaml
+  - Users.yaml
+  - Agendas.yaml
+  - Events.yaml
   # add here other fixtures files

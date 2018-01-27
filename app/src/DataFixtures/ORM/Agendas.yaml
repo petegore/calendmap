@@ -1,0 +1,3 @@
+App\Entity\Agenda:
+    agenda_{1..50}:
+        owner: '@user_*'

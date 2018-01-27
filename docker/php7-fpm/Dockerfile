@@ -36,4 +36,8 @@ RUN echo "xdebug.remote_port=9001" >> /usr/local/etc/php/conf.d/docker-php-ext-x
 RUN echo 'alias sf="php app/console"' >> ~/.bashrc
 RUN echo 'alias sf3="php bin/console"' >> ~/.bashrc
 
+# configuring php code sniffer
+RUN /root/.composer/vendor/bin/phpcs --config-set colors 1
+
+
 WORKDIR /var/www/symfony

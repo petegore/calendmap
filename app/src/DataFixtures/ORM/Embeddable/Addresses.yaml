@@ -1,0 +1,13 @@
+App\Entity\Embeddable\Address:
+    address_{1..200}:
+        __construct:
+            - '<address()>'
+            - '<numberBetween(10000,90000)>'
+            - '<city()>'
+            - 'France'
+            - '@gps_coordinates_<current()>'
+            - '<streetName()>'
+            - '<streetAddress()>'
+            - ''
+            - '<numberBetween(10000,90000)>'
+            - '<word()>'

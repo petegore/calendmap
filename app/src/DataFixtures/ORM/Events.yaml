@@ -1,0 +1,8 @@
+App\Entity\Event:
+    event_{1..200}:
+        __construct:
+            - '@agenda_*'
+            - <dateTimeBetween('-5 days','+5 days', 'Europe/Paris')>
+            - <dateTimeBetween('+5 days','+20 days', 'Europe/Paris')>
+            - '@address_<current()>'
+            - '<text()>'
