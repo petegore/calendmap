@@ -1,0 +1,7 @@
+App\Entity\Embeddable\GpsCoordinates:
+    gps_coordinates_{1..250}:
+        # min/max of latitude and longitude are the one of France center
+        __construct:
+            - '<latitude(43.969047, 49.306708)>'
+            - '<longitude(-1.438286, 7.374328)>'
+            - '<numberBetween(1, 2000)>'

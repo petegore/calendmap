@@ -14,6 +14,10 @@ Please don't forget to remove your IDE files from your .gitignore global.
 3. Run `docker-compose build` then `docker-compose up -d`
 4. Add the line t your hosts file : `127.0.0.1    calendmap.local`
 5. Run composer : `docker exec -it -u www-data -w /var/www/symfony/app calendmap-php /bin/bash -c "composer install"`
+7. Update database
+    * Prepare migration : `docker exec -it -u www-data -w /var/www/symfony/app calendmap-php /bin/bash -c "php bin/console doctrine:migrations:diff"`
+    * Migrate : `docker exec -it -u www-data -w /var/www/symfony/app calendmap-php /bin/bash -c "php bin/console doctrine:migrations:migrate"`
+    * Insert Fixtures : `docker exec -it -u www-data -w /var/www/symfony/app calendmap-php /bin/bash -c "php bin/console doctrine:fixtures:load"`
 6. Create your feature branch `git checkout -b feature/my-feature develop`
 7. Always follow the Gitflow Workflow
 8. Enjoy !

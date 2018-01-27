@@ -1,17 +1,17 @@
 App\Entity\User:
-    user1:
+    user_1:
         id: '<uuid()>'
         username: 'admin'
         password: 'admin'
         email: 'admin@test.com'
         isActive: true
-    user2:
+    user_2:
         id: '<uuid()>'
         username: 'pierre'
         password: 'pierre'
         email: 'pierre@test.com'
         isActive: true
-    user{3..10}:
+    user_{3..20}:
         id: '<uuid()>'
         username: '<username()>'
         password: 'toto'

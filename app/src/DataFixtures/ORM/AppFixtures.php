@@ -4,18 +4,28 @@ namespace App\DataFixtures\ORM;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
-use Nelmio\Alice\Loader\NativeLoader;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class AppFixtures extends Fixture
+class AppFixtures extends Fixture implements ContainerAwareInterface
 {
+    /**
+     * @var ContainerInterface
+     */
+    private $container;
+
+    public function setContainer(ContainerInterface $container = null)
+    {
+        $this->container = $container;
+    }
+
     public function load(ObjectManager $om)
     {
-        $loader = new NativeLoader();
-        $objectSet = $loader->loadFile(__DIR__.'/_loader.yaml')->getObjects();
+        $fixturesFiles = [
+            __DIR__.'/_loader.yaml'
+        ];
+        $loader = $this->container->get('fidry_alice_data_fixtures.loader.doctrine');
 
-        foreach ($objectSet as $object) {
-            $om->persist($object);
-        }
-        $om->flush();
+        return $loader->load($fixturesFiles);
     }
 }
