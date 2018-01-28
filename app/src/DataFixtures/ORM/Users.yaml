@@ -2,13 +2,13 @@ App\Entity\User:
     user_1:
         id: '<uuid()>'
         username: 'admin'
-        password: 'admin'
+        password: '\$2y\$10\$574w3EitCqOaHmhu4ER49.KPG2EMtcQlYrO0vdPyYW/EuqTHMCB0C'
         email: 'admin@test.com'
         isActive: true
     user_2:
         id: '<uuid()>'
         username: 'pierre'
-        password: 'pierre'
+        password: '\$2y\$10\$s10Lqlr0QJO8jy.QsTULL.JB/mO2j0Jq.kaS3LvQFB6VKQ9Obm9Pq'
         email: 'pierre@test.com'
         isActive: true
     user_{3..20}:

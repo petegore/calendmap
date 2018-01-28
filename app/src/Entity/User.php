@@ -5,12 +5,13 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Table(name="app_users")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User implements AdvancedUserInterface, \Serializable
+class User implements UserInterface, \Serializable
 {
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Agenda", mappedBy="owner")
@@ -121,6 +122,23 @@ class User implements AdvancedUserInterface, \Serializable
         return array('ROLE_USER');
     }
 
+    /**
+     * @param $role
+     * @return bool
+     */
+    public function hasRole($role): bool
+    {
+        return (in_array($role, $this->getRoles()));
+    }
+
+    /**
+     * @return bool
+     */
+    public function isSuperAdmin(): bool
+    {
+        return $this->hasRole('ROLE_SUPER_ADMIN');
+    }
+
     public function eraseCredentials()
     {
 
@@ -156,7 +174,7 @@ class User implements AdvancedUserInterface, \Serializable
                 $this->id,
                 $this->username,
                 $this->password,
-                $this->isActive,
+                //$this->isActive,
                 // see section on salt below
                 // $this->salt,
             )
@@ -172,7 +190,7 @@ class User implements AdvancedUserInterface, \Serializable
             $this->id,
             $this->username,
             $this->password,
-            $this->isActive,
+            //$this->isActive,
             // see section on salt below
             // $this->salt
         ) = unserialize($serialized);

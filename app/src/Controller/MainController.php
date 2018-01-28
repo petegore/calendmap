@@ -15,4 +15,12 @@ class MainController extends Controller
     {
         return $this->render('main/map.html.twig');
     }
+
+    /**
+     * @Route("/agendas/list", name="agnedas_list")
+     */
+    public function listAgenda()
+    {
+        return $this->render('agendas/list.html.twig');
+    }
 }
